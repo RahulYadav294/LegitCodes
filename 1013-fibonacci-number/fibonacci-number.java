@@ -10,7 +10,7 @@ class Solution {
         if(dp[n] == n){return dp[n];}
         int first = fib(n-1);
         int last = fib(n-2);
-        return first + last;
+        return dp[n] = first + last;
     }
     public static void main(String[] args){
         int n = 2;
