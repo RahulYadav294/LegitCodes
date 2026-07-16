@@ -11,15 +11,19 @@ class Solution {
             graph.get(u).add(v);
             graph.get(v).add(u);
         }
-         dfs(graph,visited,source,destination);
-         return visited[destination];
+         return dfs(graph,visited,source,destination);
+        
     }
-    public void dfs  (List<List<Integer>> graph,boolean[] visited ,int source,int destination){
+    public boolean dfs  (List<List<Integer>> graph,boolean[] visited ,int source,int destination){
+        if(source == destination) return true;
             visited[source] = true;
             for(int g : graph.get(source)){
                 if(!visited[g]){
-                    dfs(graph,visited,g,destination);
+                    if(dfs(graph,visited,g,destination)){
+                        return true;
+                    }
                 }
             }
+            return false;
         }
 }
