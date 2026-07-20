@@ -1,4 +1,54 @@
+//Disjoint Set
+class Solution{
+    int[] rank;
+    int[] parent;
+    int findX(int node){
+        if(parent[node] == node){
+            return node;
+        }
+        return parent[node] = findX(parent[node]);
+    }
+    void union(int u,int v){
+        int pu = findX(u);
+        int pv = findX(v);
+        if(rank[pv] < rank[pu]){
+            parent[pv] = pu;
+        }else if(rank[pu] < rank[pv]){
+            parent[pu] = pv;
+        }else{
+            parent[pu] = pv;
+            rank[pu]++;
+        }
+    }
+    public int findCircleNum(int[][] isConnected){
+        int v = isConnected.length;
+    rank = new int[v];
+    parent = new int[v];
+    for(int i = 0; i<v; i++){
+        parent[i] = i;
+    }
+    for(int i = 0; i<v; i++){
+        for(int j = i+1; j<v; j++){
+            if(isConnected[i][j] == 1){
+            union(i,j);
+            }
+        }
+    }
+    int pro = 0;
+    for(int i = 0; i<v; i++){
+        if(findX(i) == i){
+            pro++;
+        }
+        
+    }
+    return pro;
+}
+}
+
+
+
 //Using bfs
+/*
 class Solution {
     public int findCircleNum(int[][] isConnected) {
         int v = isConnected.length;
@@ -27,7 +77,7 @@ class Solution {
         }
     }
 }
-
+*/
 //Using dfs
 /*
 class Solution {
