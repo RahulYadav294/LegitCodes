@@ -1,3 +1,19 @@
+// Approach_2 using stringBuilder as stack
+class Solution {
+    public String removeDuplicates(String s) {
+        StringBuilder sb = new StringBuilder();
+        for(char ch : s.toCharArray()){
+            if(sb.length() >0 && ch == sb.charAt(sb.length()-1)){
+                sb.deleteCharAt(sb.length()-1);
+            }else{
+                sb.append(ch);
+            }
+        }
+        return sb.toString();
+    }
+}
+ //Approach_1 using stack
+ /*
 class Solution {
     public String removeDuplicates(String s) {
         Stack<Character> stack = new Stack<>();
@@ -19,3 +35,4 @@ class Solution {
         return  sb.reverse().toString();
     }
 }
+*/
