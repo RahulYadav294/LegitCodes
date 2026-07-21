@@ -3,12 +3,15 @@ class Solution {
         int n = temperatures.length;
        Stack<Integer> stack = new Stack<>();
        int[] res = new int[n];
-       for(int i = 0; i<n; i++){
-        while(!stack.isEmpty() && temperatures[i] > temperatures[stack.peek()]){
-            int prev = stack.pop();
-            res[prev] = i - prev;
+       for(int day = 0; day<n; day++){
+        while(!stack.isEmpty() && temperatures[day] > temperatures[stack.peek()]){
+           int currDay = day;
+           int prevDay = stack.peek();
+           int diff = currDay - prevDay;
+           res[prevDay] = diff;
+           stack.pop();
         }
-        stack.push(i);
+        stack.push(day);
        }
        return res; 
     }
