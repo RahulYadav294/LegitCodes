@@ -14,6 +14,24 @@
  * }
  */
 class Solution {
+    TreeNode prev = null;
+    public void flatten(TreeNode root) {
+        if(root == null) return;
+        helperLeftSubTree(root);
+    }
+    void helperLeftSubTree(TreeNode root){
+        if(root == null) return;
+        helperLeftSubTree(root.right);
+        helperLeftSubTree(root.left);  
+        root.right = prev;
+        root.left = null;
+        prev = root;
+    }
+}
+
+ // Approach1 using space
+ /*
+class Solution {
     public void flatten(TreeNode root) {
         if(root == null) return;
         List<TreeNode> list = new ArrayList<>();
@@ -32,3 +50,4 @@ class Solution {
         helper(root.right,list);
     }
 }
+*/
