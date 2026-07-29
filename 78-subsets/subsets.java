@@ -4,7 +4,7 @@ class Solution {
         if(nums.length == 0) return bigList;
         for(int mask = 0; mask < (1 << nums.length); mask++){
             List<Integer> list = new ArrayList<>();
-            for(int i = 0; i<nums.length; i++){
+            for(int i = 0; i<32; i++){
                 if((mask & (1 << i)) !=0){
                     list.add(nums[i]);
                 }
