@@ -1,4 +1,4 @@
-/*
+
 class Solution {
     public boolean validPath(int n, int[][] edges, int source, int destination) {
         List<List<Integer>> graph = new ArrayList<>();
@@ -24,7 +24,7 @@ class Solution {
             if(curr == dst) return true;
             for(int edge  : graph.get(curr)){
                 if(!visited[edge]){
-                    visited[curr] = true;
+                    visited[edge] = true;
                     q.add(edge);
                 }
             }
@@ -32,11 +32,11 @@ class Solution {
         return false;
     }
 }
-*/
 
 
 
 
+/*
 class Solution {
     public boolean validPath(int n, int[][] edges, int source, int destination) {
         List<List<Integer>> graph = new ArrayList<>();
@@ -66,3 +66,4 @@ class Solution {
             return false;
         }
 }
+*/
