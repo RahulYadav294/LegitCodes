@@ -1,18 +1,25 @@
+class Q{
+    int node;
+    Q(int node){
+        this.node = node;
+    }
+}
+
 class Solution {
     public boolean canVisitAllRooms(List<List<Integer>> rooms) {
         int v = rooms.size();
         boolean[] visited = new boolean[v];
-        Queue<Integer> q = new LinkedList<>();
-        q.add(0);
+        Queue<Q> q = new LinkedList<>();
+        q.add(new Q(0));
         visited[0] = true;
         int count = 0;
         while(!q.isEmpty()){
-            int curr = q.poll();
+            Q curr = q.poll();
                 count++;
-            for(int node : rooms.get(curr)){
+            for(int node : rooms.get(curr.node)){
                 if(!visited[node]){
                     visited[node] = true;
-                    q.offer(node);
+                    q.offer(new Q(node));
                 }
             }
         }
