@@ -1,3 +1,53 @@
+class Cell{
+    int row;
+    int col;
+    Cell(int row,int col){
+        this.row = row;
+        this.col = col;
+    }
+
+}
+class Solution {
+    public int orangesRotting(int[][] grid) {
+        int fresh = 0;
+        int m = grid.length;
+        int n = grid[0].length;
+        Queue<Cell> q = new LinkedList<>();
+        for(int row = 0; row<m; row++){
+            for(int col = 0; col<n; col++){
+                if(grid[row][col] == 2){
+                    q.offer(new Cell(row,col));
+                }else if(grid[row][col] == 1){
+                    fresh++;
+                }
+            }
+        }
+        if(fresh == 0) return 0;
+        int minute = 0;
+         int[][] directions = new int[][]{{0,1},{1,0},{-1,0},{0,-1}};
+        while(!q.isEmpty()){
+            int size = q.size();
+            minute++;
+            for(int i = 0; i<size; i++){
+                Cell curr = q.poll();
+                for(int[] d : directions){
+                int newRow = curr.row + d[0];
+                int newCol = curr.col + d[1];
+                if(newRow >=0 && newRow <m && newCol >=0 && newCol <n && grid[newRow][newCol] == 1 ){
+                    grid[newRow][newCol] = 2;
+                    fresh--;
+                    q.offer(new Cell(newRow,newCol));
+                }
+                }
+
+            }
+        }
+        if(fresh != 0) return -1;
+        return minute-1;
+        
+    }
+}
+/*
 class Solution {
     public int orangesRotting(int[][] grid) {
         int m = grid.length;
@@ -35,6 +85,6 @@ class Solution {
         }
         if(fresh != 0) return -1;
     return minute-1;
-    }
-   
+    }   
 }
+*/
