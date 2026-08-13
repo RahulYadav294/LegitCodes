@@ -63,8 +63,7 @@ class Solution {
         }
 
         // Store result of CURRENT state
-        dp[index][mask] = ans;
+       return  dp[index][mask] = ans;
 
-        return ans;
     }
 }
