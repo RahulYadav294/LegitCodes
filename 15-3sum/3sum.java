@@ -1,38 +1,46 @@
-import java.util.ArrayList;
 class Solution {
-    public static List<List<Integer>> threeSum(int[] nums) {
-        Arrays.sort(nums);
-        List<List<Integer>> result = new ArrayList<>();
-        
+    public List<List<Integer>> threeSum(int[] nums) {
         int n = nums.length;
-        int lows = 0;
+        List<List<Integer>> list = new ArrayList<>();
 
-        
-        for(int i = 0; i<n-2; i++){
-            if(i>0 && nums[i-1] == nums[i]) continue;
-           int low = i+1;
-            int high = n-1;
-            while(low < high){
-                int sum = nums[low] + nums[high] + nums[i];
-    
-                    if(sum == 0){
-                        result.add(Arrays.asList(nums[i],nums[low],nums[high]));
-                    
-                    while(low < high && nums[low] == nums[low+1]) low++;
-                    while(low < high && nums[high] == nums[high-1]) high--;
+        Arrays.sort(nums);
+
+        for(int i = 0; i < n - 2; i++) {
+
+            if(i > 0 && nums[i] == nums[i - 1])
+                continue;
+
+            int first = nums[i];
+            int low = i + 1;
+            int high = n - 1;
+
+            while(low < high) {
+
+                int sum = first + nums[low] + nums[high];
+
+                if(sum == 0) {
+                    list.add(Arrays.asList(
+                        first, nums[low], nums[high]
+                    ));
+
                     low++;
                     high--;
-                    }
-                
-                else if(sum > 0){
+
+                    while(low < high && nums[low] == nums[low - 1])
+                        low++;
+
+                    while(low < high && nums[high] == nums[high + 1])
+                        high--;
+                }
+                else if(sum > 0) {
                     high--;
                 }
-                else{
+                else {
                     low++;
                 }
             }
-
-            }
-            return result;
         }
+
+        return list;
+    }
 }
