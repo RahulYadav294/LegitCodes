@@ -1,3 +1,5 @@
+
+
 // Approach_2 Memoization
 class Solution {
     public static int jump(int[] nums) {
@@ -18,7 +20,6 @@ class Solution {
        return dp[curr] = 1 + step;
     }
 }
-  
 
 // Approach_1 Recursion
 /*
