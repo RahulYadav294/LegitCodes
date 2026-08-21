@@ -1,3 +1,15 @@
+
+
+
+
+
+
+
+
+
+
+
+
 class Solution {
     public static int candy(int[] ratings) {
         int n = ratings.length;
