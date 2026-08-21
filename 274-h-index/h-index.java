@@ -1,6 +1,22 @@
 class Solution {
     public int hIndex(int[] citations) {
         int n = citations.length;
+        Arrays.sort(citations);
+        for(int h = 0; h<n; h++){
+            int count = n-h;
+            if(citations[h] >= count){
+                return count;
+            }
+        }
+        return 0 ;
+    }
+}
+
+
+/*
+class Solution {
+    public int hIndex(int[] citations) {
+        int n = citations.length;
         int max = Integer.MIN_VALUE;
         for(int h = 0; h<=n; h++){
             int count = 0;
@@ -16,3 +32,4 @@ class Solution {
         return max;
     }
 }
+*/
