@@ -1,3 +1,7 @@
+
+
+
+
 class Solution {
     public static int trap(int[] height) {
         int left = 0;
